@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->id();
+            $table->string('cover_art')->default(storage_path('app/private/placeholder-image.jpg'))->nullable();
             $table->string('name');
-            $table->string('cover_art')->nullable();
-            $table->longText('review');
+            $table->string('status');
+            $table->longText('review')->nullable();
             $table->decimal('score', total: 3, places: 1);
             $table->timestamps();
         });

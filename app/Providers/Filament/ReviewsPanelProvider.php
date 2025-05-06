@@ -28,7 +28,12 @@ class ReviewsPanelProvider extends PanelProvider
             ->path('reviews')
             ->login()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Blue,
+                'secondary' => Color::Emerald,
+                'gray' => Color::Gray,
+                'success' => Color::Emerald,
+                'warning' => Color::Emerald,
+                'danger' => Color::Red,
             ])
             ->font('Roboto')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
