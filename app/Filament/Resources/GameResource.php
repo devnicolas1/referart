@@ -97,6 +97,18 @@ class GameResource extends Resource
                 TextColumn::make('status')
                     ->formatStateUsing(fn (string $state): string => config("referart.statuses.{$state}"))
                     ->badge()
+                    ->color(function ($state) {
+                        $status = config("referart.statuses.{$state}");
+                        return match ($status) {
+                            config('referart.statuses.check_again') => Color::Purple,
+                            config('referart.statuses.dropped')     => Color::Red,
+                            config('referart.statuses.finished')    => Color::Emerald,
+                            config('referart.statuses.in_progress') => Color::Amber,
+                            config('referart.statuses.not_started') => Color::Gray,
+                            config('referart.statuses.on_the_line') => Color::Cyan,
+                            default                                 => Color::Gray,
+                        };
+                    })
                     ->sortable(),
 
                 // -----------------------------------------------------------------------------------------------------

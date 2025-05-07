@@ -6,5 +6,4 @@ This is the README that will definitively be finished sometime
 
 - Probably transform the statuses into an enum ([doc here](https://filamentphp.com/docs/3.x/support/enums))
 - Make a translation for things
-- Add colors for statuses
 - docker?
