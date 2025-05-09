@@ -12,12 +12,15 @@ return [
     */
 
     'Cover Art' => 'Foto de Capa',
+    'Books' => 'Livros',
+    'TV Shows' => 'Séries',
     'Name' => 'Nome',
     'Games' => 'Jogos',
     'Score' => 'Nota',
     'Review' => 'Resenha',
     'Status' => 'Status',
     'Filter by Status' => 'Filtrar por Status',
+    'Movies' => 'Filmes',
     'statuses' => [
         'Check Again' => 'Ver De Novo',
         'Dropped' => 'Dropado',

@@ -2,9 +2,8 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\GameResource\Pages;
-use App\Filament\Resources\GameResource\RelationManagers;
-use App\Models\Game;
+use App\Filament\Resources\MovieResource\Pages;
+use App\Models\Movie;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
@@ -22,11 +21,11 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class GameResource extends Resource
+class MovieResource extends Resource
 {
-    protected static ?string $model = Game::class;
+    protected static ?string $model = Movie::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-computer-desktop';
+    protected static ?string $navigationIcon = 'heroicon-o-film';
 
     /**
      * Returns the localized navigation label.
@@ -35,7 +34,7 @@ class GameResource extends Resource
      */
     public static function getNavigationLabel(): string
     {
-        return __('filament.Games');
+        return __('filament.Movies');
     }
 
     /**
@@ -45,7 +44,7 @@ class GameResource extends Resource
      */
     public function getHeading(): string
     {
-        return __('filament.Games');
+        return __('filament.Movies');
     }
 
     /**
@@ -55,7 +54,7 @@ class GameResource extends Resource
      */
     public static function getModelLabel(): string
     {
-        return __('filament.Games');
+        return __('filament.Movies');
     }
 
     public static function form(Form $form): Form
@@ -68,7 +67,7 @@ class GameResource extends Resource
                     ->label(__('filament.Cover Art'))
                     ->image()
                     ->imageEditor()
-                    ->directory('games')
+                    ->directory('movies')
                     ->columnSpanFull(),
 
                 // -----------------------------------------------------------------------------------------------------
@@ -206,10 +205,10 @@ class GameResource extends Resource
     public static function getPages(): array
     {
         return [
-            'create' => Pages\CreateGame::route('/create'),
-            'edit' => Pages\EditGame::route('/{record}/edit'),
-            'index' => Pages\ListGames::route('/'),
-            'view' => Pages\ViewGame::route('/{record}'),
+            'create' => Pages\CreateMovie::route('/create'),
+            'edit' => Pages\EditMovie::route('/{record}/edit'),
+            'index' => Pages\ListMovies::route('/'),
+            'view' => Pages\ViewMovie::route('/{record}'),
         ];
     }
 }

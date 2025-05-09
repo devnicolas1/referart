@@ -13,10 +13,11 @@ class TvShow extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
         'cover_art',
+        'name',
         'review',
-        'score'
+        'score',
+        'status',
     ];
 
     /**

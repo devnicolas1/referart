@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\GameResource\Pages;
-use App\Filament\Resources\GameResource\RelationManagers;
-use App\Models\Game;
+use App\Filament\Resources\BookResource\Pages;
+use App\Filament\Resources\BookResource\RelationManagers;
+use App\Models\Book;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
@@ -22,11 +22,11 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class GameResource extends Resource
+class BookResource extends Resource
 {
-    protected static ?string $model = Game::class;
+    protected static ?string $model = Book::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-computer-desktop';
+    protected static ?string $navigationIcon = 'heroicon-o-book-open';
 
     /**
      * Returns the localized navigation label.
@@ -35,7 +35,7 @@ class GameResource extends Resource
      */
     public static function getNavigationLabel(): string
     {
-        return __('filament.Games');
+        return __('filament.Books');
     }
 
     /**
@@ -45,7 +45,7 @@ class GameResource extends Resource
      */
     public function getHeading(): string
     {
-        return __('filament.Games');
+        return __('filament.Books');
     }
 
     /**
@@ -55,7 +55,7 @@ class GameResource extends Resource
      */
     public static function getModelLabel(): string
     {
-        return __('filament.Games');
+        return __('filament.Books');
     }
 
     public static function form(Form $form): Form
@@ -68,7 +68,7 @@ class GameResource extends Resource
                     ->label(__('filament.Cover Art'))
                     ->image()
                     ->imageEditor()
-                    ->directory('games')
+                    ->directory('books')
                     ->columnSpanFull(),
 
                 // -----------------------------------------------------------------------------------------------------
@@ -206,10 +206,10 @@ class GameResource extends Resource
     public static function getPages(): array
     {
         return [
-            'create' => Pages\CreateGame::route('/create'),
-            'edit' => Pages\EditGame::route('/{record}/edit'),
-            'index' => Pages\ListGames::route('/'),
-            'view' => Pages\ViewGame::route('/{record}'),
+            'create' => Pages\CreateBook::route('/create'),
+            'edit' => Pages\EditBook::route('/{record}/edit'),
+            'index' => Pages\ListBooks::route('/'),
+            'view' => Pages\ViewBook::route('/{record}'),
         ];
     }
 }

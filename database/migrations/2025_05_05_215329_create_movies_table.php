@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('movies', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('status');
             $table->string('cover_art')->nullable();
             $table->longText('review');
             $table->decimal('score', total: 3, places: 1);
