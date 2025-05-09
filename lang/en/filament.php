@@ -12,12 +12,15 @@ return [
     */
 
     'Cover Art' => 'Cover Art',
+    'Books' => 'Books',
+    'TV Shows' => 'TV Shows',
     'Name' => 'Name',
     'Games' => 'Games',
     'Score' => 'Score',
     'Review' => 'Review',
     'Status' => 'Status',
     'Filter by Status' => 'Filter by Status',
+    'Movies' => 'Movies',
     'statuses' => [
         'Check Again' => 'Check Again',
         'Dropped' => 'Dropped',
