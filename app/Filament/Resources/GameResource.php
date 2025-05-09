@@ -28,6 +28,36 @@ class GameResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    /**
+     * Returns the localized navigation label.
+     * 
+     * @return string
+     */
+    public static function getNavigationLabel(): string
+    {
+        return __('filament.Games');
+    }
+
+    /**
+     * Returns the localized heading.
+     * 
+     * @return string
+     */
+    public function getHeading(): string
+    {
+        return __('filament.Games');
+    }
+
+    /**
+     * Returns the localized model label.
+     * 
+     * @return string
+     */
+    public static function getModelLabel(): string
+    {
+        return __('filament.Games');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -35,6 +65,7 @@ class GameResource extends Resource
                 // -----------------------------------------------------------------------------------------------------
 
                 FileUpload::make('cover_art')
+                    ->label(__('filament.Cover Art'))
                     ->image()
                     ->imageEditor()
                     ->directory('games')
@@ -43,6 +74,7 @@ class GameResource extends Resource
                 // -----------------------------------------------------------------------------------------------------
 
                 TextInput::make('name')
+                    ->label(__('filament.Name'))
                     ->required()
                     ->maxLength(255)
                     ->columnSpanFull(),
@@ -50,6 +82,7 @@ class GameResource extends Resource
                 // -----------------------------------------------------------------------------------------------------
 
                 Select::make('status')
+                    ->label(__('filament.Status'))
                     ->required()
                     ->options(config('referart.statuses'))
                     ->columnSpanFull(),
@@ -57,6 +90,7 @@ class GameResource extends Resource
                 // -----------------------------------------------------------------------------------------------------
 
                 TextInput::make('score')
+                    ->label(__('filament.Score'))
                     ->required()
                     ->numeric()
                     ->minValue(0)
@@ -68,6 +102,7 @@ class GameResource extends Resource
                 // -----------------------------------------------------------------------------------------------------
 
                 MarkdownEditor::make('review')
+                    ->label(__('filament.Review'))
                     ->columnSpanFull(),
 
                 // -----------------------------------------------------------------------------------------------------
@@ -81,6 +116,7 @@ class GameResource extends Resource
                 // -----------------------------------------------------------------------------------------------------
 
                 ImageColumn::make('cover_art')
+                    ->label(__('filament.Cover Art'))
                     ->disk('public')
                     ->width(150)
                     ->height(100)
@@ -89,13 +125,18 @@ class GameResource extends Resource
                 // -----------------------------------------------------------------------------------------------------
 
                 TextColumn::make('name')
+                    ->label(__('filament.Name'))
                     ->searchable()
                     ->sortable(),
 
                 // -----------------------------------------------------------------------------------------------------
 
                 TextColumn::make('status')
-                    ->formatStateUsing(fn (string $state): string => config("referart.statuses.{$state}"))
+                    ->label(__('filament.Status'))
+                    ->formatStateUsing(function (string $state): string {
+                        $status = config("referart.statuses.{$state}");
+                        return __("filament.statuses.{$status}");
+                    })
                     ->badge()
                     ->color(function ($state) {
                         $status = config("referart.statuses.{$state}");
@@ -114,6 +155,7 @@ class GameResource extends Resource
                 // -----------------------------------------------------------------------------------------------------
 
                 TextColumn::make('score')
+                    ->label(__('filament.Score'))
                     ->badge()
                     ->color(function ($state) {
                         return match (true) {
@@ -139,7 +181,7 @@ class GameResource extends Resource
                 SelectFilter::make('status')
                     ->multiple()
                     ->options(config('referart.statuses'))
-                    ->label('Filter by Status')
+                    ->label(__('filament.Filter by Status'))
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
