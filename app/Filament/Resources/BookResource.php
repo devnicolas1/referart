@@ -79,7 +79,15 @@ class BookResource extends Resource
                 Select::make('status')
                     ->label(__('filament.Status'))
                     ->required()
-                    ->options(config('referart.statuses'))
+                    ->options(function() {
+                        $statuses = config('referart.statuses');
+                        $translatedOptions = [];
+                        foreach ($statuses as $key => $value) {
+                            $translatedOptions[$key] = __("filament.statuses.{$value}");
+                        }
+                        
+                        return $translatedOptions;
+                    })
                     ->columnSpanFull(),
 
                 // -----------------------------------------------------------------------------------------------------
