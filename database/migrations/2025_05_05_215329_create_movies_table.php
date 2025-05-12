@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('status');
             $table->string('cover_art')->nullable();
-            $table->longText('review');
+            $table->longText('review')->nullable();
             $table->decimal('score', total: 3, places: 1);
             $table->timestamps();
         });
