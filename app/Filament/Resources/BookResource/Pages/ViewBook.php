@@ -15,7 +15,7 @@ class ViewBook extends ViewRecord
 
     /**
      * Get the header actions for the page.
-     * 
+     *
      * @return array<int, Actions\Action>
      */
     protected function getHeaderActions(): array

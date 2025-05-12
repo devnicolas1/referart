@@ -3,9 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TvShowResource\Pages;
-use App\Filament\Resources\TvShowResource\RelationManagers;
 use App\Models\TvShow;
-use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Select;
@@ -15,12 +13,9 @@ use Filament\Resources\Resource;
 use Filament\Support\Colors\Color;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
-use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class TvShowResource extends Resource
 {
@@ -30,7 +25,7 @@ class TvShowResource extends Resource
 
     /**
      * Returns the localized navigation label.
-     * 
+     *
      * @return string
      */
     public static function getNavigationLabel(): string
@@ -40,7 +35,7 @@ class TvShowResource extends Resource
 
     /**
      * Returns the localized heading.
-     * 
+     *
      * @return string
      */
     public function getHeading(): string
@@ -50,7 +45,7 @@ class TvShowResource extends Resource
 
     /**
      * Returns the localized model label.
-     * 
+     *
      * @return string
      */
     public static function getModelLabel(): string
@@ -181,7 +176,7 @@ class TvShowResource extends Resource
                 SelectFilter::make('status')
                     ->multiple()
                     ->options(config('referart.statuses'))
-                    ->label(__('filament.Filter by Status'))
+                    ->label(__('filament.Filter by Status')),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -198,9 +193,7 @@ class TvShowResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public static function getPages(): array
