@@ -2,13 +2,20 @@
 
 namespace App\Filament\Resources;
 
+use Filament\Schemas\Schema;
+use Filament\Actions\EditAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use App\Filament\Resources\TvShowResource\Pages\CreateTvShow;
+use App\Filament\Resources\TvShowResource\Pages\EditTvShow;
+use App\Filament\Resources\TvShowResource\Pages\ListTvShows;
+use App\Filament\Resources\TvShowResource\Pages\ViewTvShow;
 use App\Filament\Resources\TvShowResource\Pages;
 use App\Models\TvShow;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Support\Colors\Color;
 use Filament\Tables;
@@ -21,7 +28,7 @@ class TvShowResource extends Resource
 {
     protected static ?string $model = TvShow::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-tv';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-tv';
 
     /**
      * Returns the localized navigation label.
@@ -53,10 +60,10 @@ class TvShowResource extends Resource
         return __('filament.TV Shows');
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 // -----------------------------------------------------------------------------------------------------
 
                 FileUpload::make('cover_art')
@@ -186,12 +193,12 @@ class TvShowResource extends Resource
                     ->options(config('referart.statuses'))
                     ->label(__('filament.Filter by Status')),
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->recordActions([
+                EditAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ])
             ->recordUrl(
@@ -207,10 +214,10 @@ class TvShowResource extends Resource
     public static function getPages(): array
     {
         return [
-            'create' => Pages\CreateTvShow::route('/create'),
-            'edit' => Pages\EditTvShow::route('/{record}/edit'),
-            'index' => Pages\ListTvShows::route('/'),
-            'view' => Pages\ViewTvShow::route('/{record}'),
+            'create' => CreateTvShow::route('/create'),
+            'edit' => EditTvShow::route('/{record}/edit'),
+            'index' => ListTvShows::route('/'),
+            'view' => ViewTvShow::route('/{record}'),
         ];
     }
 }

@@ -2,13 +2,20 @@
 
 namespace App\Filament\Resources;
 
+use Filament\Schemas\Schema;
+use Filament\Actions\EditAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use App\Filament\Resources\MovieResource\Pages\CreateMovie;
+use App\Filament\Resources\MovieResource\Pages\EditMovie;
+use App\Filament\Resources\MovieResource\Pages\ListMovies;
+use App\Filament\Resources\MovieResource\Pages\ViewMovie;
 use App\Filament\Resources\MovieResource\Pages;
 use App\Models\Movie;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Support\Colors\Color;
 use Filament\Tables;
@@ -21,7 +28,7 @@ class MovieResource extends Resource
 {
     protected static ?string $model = Movie::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-film';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-film';
 
     /**
      * Returns the localized navigation label.
@@ -53,10 +60,10 @@ class MovieResource extends Resource
         return __('filament.Movies');
     }
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 // -----------------------------------------------------------------------------------------------------
 
                 FileUpload::make('cover_art')
@@ -186,12 +193,12 @@ class MovieResource extends Resource
                     ->options(config('referart.statuses'))
                     ->label(__('filament.Filter by Status')),
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->recordActions([
+                EditAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ])
             ->recordUrl(
@@ -207,10 +214,10 @@ class MovieResource extends Resource
     public static function getPages(): array
     {
         return [
-            'create' => Pages\CreateMovie::route('/create'),
-            'edit' => Pages\EditMovie::route('/{record}/edit'),
-            'index' => Pages\ListMovies::route('/'),
-            'view' => Pages\ViewMovie::route('/{record}'),
+            'create' => CreateMovie::route('/create'),
+            'edit' => EditMovie::route('/{record}/edit'),
+            'index' => ListMovies::route('/'),
+            'view' => ViewMovie::route('/{record}'),
         ];
     }
 }
