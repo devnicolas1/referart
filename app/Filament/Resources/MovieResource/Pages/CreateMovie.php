@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\Movies\Pages;
+namespace App\Filament\Resources\MovieResource\Pages;
 
-use App\Filament\Resources\Movies\MovieResource;
+use App\Filament\Resources\MovieResource;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateMovie extends CreateRecord

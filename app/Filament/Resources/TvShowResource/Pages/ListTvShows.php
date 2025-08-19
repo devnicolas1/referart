@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Filament\Resources\TvShows\Pages;
+namespace App\Filament\Resources\TvShowResource\Pages;
 
 use Filament\Actions\CreateAction;
-use App\Filament\Resources\TvShows\TvShowResource;
+use App\Filament\Resources\TvShowResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 

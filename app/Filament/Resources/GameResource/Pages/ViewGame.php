@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Filament\Resources\TvShows\Pages;
+namespace App\Filament\Resources\GameResource\Pages;
 
 use Filament\Actions\EditAction;
 use Filament\Actions\DeleteAction;
-use App\Filament\Resources\TvShows\TvShowResource;
+use App\Filament\Resources\GameResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ViewRecord;
 
-class ViewTvShow extends ViewRecord
+class ViewGame extends ViewRecord
 {
     /**
      * The resource that this page belongs to.
      */
-    protected static string $resource = TvShowResource::class;
+    protected static string $resource = GameResource::class;
 
     /**
      * Get the header actions for the page.

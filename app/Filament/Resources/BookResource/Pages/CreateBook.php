@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\Books\Pages;
+namespace App\Filament\Resources\BookResource\Pages;
 
-use App\Filament\Resources\Books\BookResource;
+use App\Filament\Resources\BookResource;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateBook extends CreateRecord

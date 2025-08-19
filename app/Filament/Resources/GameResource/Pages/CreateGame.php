@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\Games\Pages;
+namespace App\Filament\Resources\GameResource\Pages;
 
-use App\Filament\Resources\Games\GameResource;
+use App\Filament\Resources\GameResource;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateGame extends CreateRecord

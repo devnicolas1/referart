@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\TvShows\Pages;
+namespace App\Filament\Resources\TvShowResource\Pages;
 
-use App\Filament\Resources\TvShows\TvShowResource;
+use App\Filament\Resources\TvShowResource;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateTvShow extends CreateRecord

@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Filament\Resources\Games;
+namespace App\Filament\Resources;
 
 use Filament\Schemas\Schema;
 use Filament\Actions\EditAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
-use App\Filament\Resources\Games\Pages\CreateGame;
-use App\Filament\Resources\Games\Pages\EditGame;
-use App\Filament\Resources\Games\Pages\ListGames;
-use App\Filament\Resources\Games\Pages\ViewGame;
-use App\Filament\Resources\GameResource\Pages;
-use App\Models\Game;
+use App\Filament\Resources\TvShowResource\Pages\CreateTvShow;
+use App\Filament\Resources\TvShowResource\Pages\EditTvShow;
+use App\Filament\Resources\TvShowResource\Pages\ListTvShows;
+use App\Filament\Resources\TvShowResource\Pages\ViewTvShow;
+use App\Filament\Resources\TvShowResource\Pages;
+use App\Models\TvShow;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Select;
@@ -24,11 +24,11 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 
-class GameResource extends Resource
+class TvShowResource extends Resource
 {
-    protected static ?string $model = Game::class;
+    protected static ?string $model = TvShow::class;
 
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-computer-desktop';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-tv';
 
     /**
      * Returns the localized navigation label.
@@ -37,7 +37,7 @@ class GameResource extends Resource
      */
     public static function getNavigationLabel(): string
     {
-        return __('filament.Games');
+        return __('filament.TV Shows');
     }
 
     /**
@@ -47,7 +47,7 @@ class GameResource extends Resource
      */
     public function getHeading(): string
     {
-        return __('filament.Games');
+        return __('filament.TV Shows');
     }
 
     /**
@@ -57,7 +57,7 @@ class GameResource extends Resource
      */
     public static function getModelLabel(): string
     {
-        return __('filament.Games');
+        return __('filament.TV Shows');
     }
 
     public static function form(Schema $schema): Schema
@@ -70,7 +70,7 @@ class GameResource extends Resource
                     ->label(__('filament.Cover Art'))
                     ->image()
                     ->imageEditor()
-                    ->directory('games')
+                    ->directory('tv_shows')
                     ->columnSpanFull(),
 
                 // -----------------------------------------------------------------------------------------------------
@@ -214,10 +214,10 @@ class GameResource extends Resource
     public static function getPages(): array
     {
         return [
-            'create' => CreateGame::route('/create'),
-            'edit' => EditGame::route('/{record}/edit'),
-            'index' => ListGames::route('/'),
-            'view' => ViewGame::route('/{record}'),
+            'create' => CreateTvShow::route('/create'),
+            'edit' => EditTvShow::route('/{record}/edit'),
+            'index' => ListTvShows::route('/'),
+            'view' => ViewTvShow::route('/{record}'),
         ];
     }
 }

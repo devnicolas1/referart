@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Filament\Resources\TvShows\Pages;
+namespace App\Filament\Resources\BookResource\Pages;
 
 use Filament\Actions\DeleteAction;
-use App\Filament\Resources\TvShows\TvShowResource;
+use App\Filament\Resources\BookResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditTvShow extends EditRecord
+class EditBook extends EditRecord
 {
-    protected static string $resource = TvShowResource::class;
+    protected static string $resource = BookResource::class;
 
     protected function getHeaderActions(): array
     {

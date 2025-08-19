@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Filament\Resources\Books;
+namespace App\Filament\Resources;
 
 use Filament\Schemas\Schema;
 use Filament\Actions\EditAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
-use App\Filament\Resources\Books\Pages\CreateBook;
-use App\Filament\Resources\Books\Pages\EditBook;
-use App\Filament\Resources\Books\Pages\ListBooks;
-use App\Filament\Resources\Books\Pages\ViewBook;
+use App\Filament\Resources\BookResource\Pages\CreateBook;
+use App\Filament\Resources\BookResource\Pages\EditBook;
+use App\Filament\Resources\BookResource\Pages\ListBooks;
+use App\Filament\Resources\BookResource\Pages\ViewBook;
 use App\Filament\Resources\BookResource\Pages;
 use App\Models\Book;
 use Filament\Forms\Components\FileUpload;

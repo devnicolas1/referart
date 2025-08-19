@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Filament\Resources\TvShows;
+namespace App\Filament\Resources;
 
 use Filament\Schemas\Schema;
 use Filament\Actions\EditAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
-use App\Filament\Resources\TvShows\Pages\CreateTvShow;
-use App\Filament\Resources\TvShows\Pages\EditTvShow;
-use App\Filament\Resources\TvShows\Pages\ListTvShows;
-use App\Filament\Resources\TvShows\Pages\ViewTvShow;
-use App\Filament\Resources\TvShowResource\Pages;
-use App\Models\TvShow;
+use App\Filament\Resources\MovieResource\Pages\CreateMovie;
+use App\Filament\Resources\MovieResource\Pages\EditMovie;
+use App\Filament\Resources\MovieResource\Pages\ListMovies;
+use App\Filament\Resources\MovieResource\Pages\ViewMovie;
+use App\Filament\Resources\MovieResource\Pages;
+use App\Models\Movie;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Select;
@@ -24,11 +24,11 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 
-class TvShowResource extends Resource
+class MovieResource extends Resource
 {
-    protected static ?string $model = TvShow::class;
+    protected static ?string $model = Movie::class;
 
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-tv';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-film';
 
     /**
      * Returns the localized navigation label.
@@ -37,7 +37,7 @@ class TvShowResource extends Resource
      */
     public static function getNavigationLabel(): string
     {
-        return __('filament.TV Shows');
+        return __('filament.Movies');
     }
 
     /**
@@ -47,7 +47,7 @@ class TvShowResource extends Resource
      */
     public function getHeading(): string
     {
-        return __('filament.TV Shows');
+        return __('filament.Movies');
     }
 
     /**
@@ -57,7 +57,7 @@ class TvShowResource extends Resource
      */
     public static function getModelLabel(): string
     {
-        return __('filament.TV Shows');
+        return __('filament.Movies');
     }
 
     public static function form(Schema $schema): Schema
@@ -70,7 +70,7 @@ class TvShowResource extends Resource
                     ->label(__('filament.Cover Art'))
                     ->image()
                     ->imageEditor()
-                    ->directory('tv_shows')
+                    ->directory('movies')
                     ->columnSpanFull(),
 
                 // -----------------------------------------------------------------------------------------------------
@@ -214,10 +214,10 @@ class TvShowResource extends Resource
     public static function getPages(): array
     {
         return [
-            'create' => CreateTvShow::route('/create'),
-            'edit' => EditTvShow::route('/{record}/edit'),
-            'index' => ListTvShows::route('/'),
-            'view' => ViewTvShow::route('/{record}'),
+            'create' => CreateMovie::route('/create'),
+            'edit' => EditMovie::route('/{record}/edit'),
+            'index' => ListMovies::route('/'),
+            'view' => ViewMovie::route('/{record}'),
         ];
     }
 }
