@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Filament\Resources\MovieResource\Pages;
+namespace App\Filament\Resources\Books\Pages;
 
 use Filament\Actions\EditAction;
 use Filament\Actions\DeleteAction;
-use App\Filament\Resources\MovieResource;
+use App\Filament\Resources\Books\BookResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ViewRecord;
 
-class ViewMovie extends ViewRecord
+class ViewBook extends ViewRecord
 {
     /**
      * The resource that this page belongs to.
      */
-    protected static string $resource = MovieResource::class;
+    protected static string $resource = BookResource::class;
 
     /**
      * Get the header actions for the page.

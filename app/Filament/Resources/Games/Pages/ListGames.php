@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Filament\Resources\MovieResource\Pages;
+namespace App\Filament\Resources\Games\Pages;
 
 use Filament\Actions\CreateAction;
-use App\Filament\Resources\MovieResource;
+use App\Filament\Resources\Games\GameResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
-class ListMovies extends ListRecords
+class ListGames extends ListRecords
 {
-    protected static string $resource = MovieResource::class;
+    protected static string $resource = GameResource::class;
 
     protected function getHeaderActions(): array
     {

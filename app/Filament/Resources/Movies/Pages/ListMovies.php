@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Filament\Resources\BookResource\Pages;
+namespace App\Filament\Resources\Movies\Pages;
 
 use Filament\Actions\CreateAction;
-use App\Filament\Resources\BookResource;
+use App\Filament\Resources\Movies\MovieResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
-class ListBooks extends ListRecords
+class ListMovies extends ListRecords
 {
-    protected static string $resource = BookResource::class;
+    protected static string $resource = MovieResource::class;
 
     protected function getHeaderActions(): array
     {
