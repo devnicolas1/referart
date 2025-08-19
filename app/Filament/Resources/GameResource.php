@@ -2,20 +2,13 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Schemas\Schema;
-use Filament\Actions\EditAction;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use App\Filament\Resources\GameResource\Pages\CreateGame;
-use App\Filament\Resources\GameResource\Pages\EditGame;
-use App\Filament\Resources\GameResource\Pages\ListGames;
-use App\Filament\Resources\GameResource\Pages\ViewGame;
 use App\Filament\Resources\GameResource\Pages;
 use App\Models\Game;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Support\Colors\Color;
 use Filament\Tables;
@@ -28,7 +21,7 @@ class GameResource extends Resource
 {
     protected static ?string $model = Game::class;
 
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-computer-desktop';
+    protected static ?string $navigationIcon = 'heroicon-o-computer-desktop';
 
     /**
      * Returns the localized navigation label.
@@ -60,10 +53,10 @@ class GameResource extends Resource
         return __('filament.Games');
     }
 
-    public static function form(Schema $schema): Schema
+    public static function form(Form $form): Form
     {
-        return $schema
-            ->components([
+        return $form
+            ->schema([
                 // -----------------------------------------------------------------------------------------------------
 
                 FileUpload::make('cover_art')
@@ -193,12 +186,12 @@ class GameResource extends Resource
                     ->options(config('referart.statuses'))
                     ->label(__('filament.Filter by Status')),
             ])
-            ->recordActions([
-                EditAction::make(),
+            ->actions([
+                Tables\Actions\EditAction::make(),
             ])
-            ->toolbarActions([
-                BulkActionGroup::make([
-                    DeleteBulkAction::make(),
+            ->bulkActions([
+                Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ])
             ->recordUrl(
@@ -214,10 +207,10 @@ class GameResource extends Resource
     public static function getPages(): array
     {
         return [
-            'create' => CreateGame::route('/create'),
-            'edit' => EditGame::route('/{record}/edit'),
-            'index' => ListGames::route('/'),
-            'view' => ViewGame::route('/{record}'),
+            'create' => Pages\CreateGame::route('/create'),
+            'edit' => Pages\EditGame::route('/{record}/edit'),
+            'index' => Pages\ListGames::route('/'),
+            'view' => Pages\ViewGame::route('/{record}'),
         ];
     }
 }

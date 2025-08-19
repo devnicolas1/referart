@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources\BookResource\Pages;
 
-use Filament\Actions\DeleteAction;
 use App\Filament\Resources\BookResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
@@ -14,7 +13,7 @@ class EditBook extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            DeleteAction::make(),
+            Actions\DeleteAction::make(),
         ];
     }
 }

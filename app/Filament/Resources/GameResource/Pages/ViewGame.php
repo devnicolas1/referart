@@ -2,8 +2,6 @@
 
 namespace App\Filament\Resources\GameResource\Pages;
 
-use Filament\Actions\EditAction;
-use Filament\Actions\DeleteAction;
 use App\Filament\Resources\GameResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ViewRecord;
@@ -23,8 +21,8 @@ class ViewGame extends ViewRecord
     protected function getHeaderActions(): array
     {
         return [
-            EditAction::make(),
-            DeleteAction::make(),
+            Actions\EditAction::make(),
+            Actions\DeleteAction::make(),
         ];
     }
 }

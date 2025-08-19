@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources\MovieResource\Pages;
 
-use Filament\Actions\DeleteAction;
 use App\Filament\Resources\MovieResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
@@ -14,7 +13,7 @@ class EditMovie extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            DeleteAction::make(),
+            Actions\DeleteAction::make(),
         ];
     }
 }
